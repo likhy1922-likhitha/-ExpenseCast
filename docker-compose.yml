@@ -1,0 +1,37 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: expensecast
+      POSTGRES_PASSWORD: expensecast_local_dev
+      POSTGRES_DB: expensecast
+    ports:
+      - "5432:5432"
+    volumes:
+      - expensecast_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U expensecast"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://expensecast:expensecast_local_dev@postgres:5432/expensecast
+      CORS_ORIGINS: http://localhost:5173
+      ENABLE_DEMO_MODE: "true"
+      SUPABASE_JWT_SECRET: ${SUPABASE_JWT_SECRET:-local-dev-secret}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - ./machine-learning:/machine-learning
+
+volumes:
+  expensecast_pg_data:
