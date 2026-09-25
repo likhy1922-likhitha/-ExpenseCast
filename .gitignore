@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.db
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Env
+.env
+.env.local
+*.env
+
+# ML artifacts (large binary files -- regenerate via training scripts)
+
+machine-learning/data/generated/*.csv
+machine-learning/data/realdata/realdata_normalized.csv
+machine-learning/evaluation/*.png
+
+# Uploads
+backend/tmp_uploads/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store

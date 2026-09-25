@@ -1,0 +1,35 @@
+{
+  "model_file": "lstm_expense_forecast.keras",
+  "feature_scaler_file": "feature_scaler.joblib",
+  "target_scaler_file": "target_scaler.joblib",
+  "lookback_days": 30,
+  "horizon_days": 7,
+  "feature_columns": [
+    "daily_expense",
+    "daily_income",
+    "daily_savings",
+    "daily_investment",
+    "recurring_amount",
+    "day_of_week",
+    "day_of_month",
+    "month",
+    "is_weekend",
+    "days_remaining_in_month",
+    "rolling_7d_expense_avg",
+    "rolling_30d_expense_avg",
+    "rolling_7d_income_avg",
+    "budget_usage_ratio"
+  ],
+  "target_column": "daily_expense (summed over horizon)",
+  "training_sequences": 3741,
+  "validation_sequences": 802,
+  "test_sequences": 802,
+  "test_metrics": {
+    "mae": 1813.5028076171875,
+    "rmse": 2616.079796183595,
+    "mape": 44.3255215883255
+  },
+  "trained_at": "2026-07-15T14:36:16.597062Z",
+  "min_history_days_for_personalized_forecast": 60,
+  "min_history_days_for_low_confidence_forecast": 30
+}

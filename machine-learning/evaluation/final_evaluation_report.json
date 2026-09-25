@@ -1,0 +1,14 @@
+{
+  "synthetic_test_metrics": {
+    "mae": 1813.5028076171875,
+    "rmse": 2616.079796183595,
+    "mape": 44.3255215883255
+  },
+  "real_data_ood_metrics": {
+    "mae": 3335.905029296875,
+    "rmse": 4187.929798838562,
+    "mape": 105.39013147354126,
+    "n_samples": 1788
+  },
+  "real_data_note": "This dataset was never used in training or hyperparameter tuning. It is used purely to sanity-check generalization to real spending patterns."
+}
